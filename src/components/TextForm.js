@@ -15,8 +15,12 @@ function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
   }
+  function handleClearClick() {
+    let newText = "";
+    setText(newText);
+  }
 
-  const [text, setText] = useState("Enter your text");
+  const [text, setText] = useState("");
   return (
     <>
       <Form>
@@ -35,7 +39,15 @@ function TextForm(props) {
         <Button variant="primary mx-2" onClick={handleLoClick}>
           LowerCase
         </Button>
+        <Button variant="primary " onClick={handleClearClick}>
+          Clear
+        </Button>
       </Form>
+      <h2 className="my-3">Your text summary</h2>
+      <p>
+        {text.split(". ").length} sentences {text.split(" ").length} words and{" "}
+        {text.length} characters
+      </p>
     </>
   );
 }
