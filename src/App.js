@@ -6,7 +6,7 @@ import TextForm from './components/TextForm';
 export default function App() {
   return (
     <div>
-     <FirstNav />
+     <FirstNav title="TextUtils"/>
      <div class='container my-3' >
      <TextForm heading='Enter your text'/>
      </div>

@@ -7,8 +7,12 @@ function TextForm(props) {
     setText(event.target.value);
   }
 
-  function handleClick() {
+  function handleUpClick() {
     let newText = text.toUpperCase();
+    setText(newText);
+  }
+  function handleLoClick() {
+    let newText = text.toLowerCase();
     setText(newText);
   }
 
@@ -25,8 +29,11 @@ function TextForm(props) {
             rows={4}
           />
         </Form.Group>
-        <Button variant="primary" onClick={handleClick}>
+        <Button variant="primary" onClick={handleUpClick}>
           UpperCase
+        </Button>
+        <Button variant="primary mx-2" onClick={handleLoClick}>
+          LowerCase
         </Button>
       </Form>
     </>
