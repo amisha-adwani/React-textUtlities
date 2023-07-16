@@ -56,7 +56,7 @@ function TextForm(props) {
         <Button variant="primary " onClick={handleClearClick}>
           Clear
         </Button>
-        <Button variant="primary mx-2" onClick={handleSpeakClick}>
+        <Button variant="primary m-2" onClick={handleSpeakClick}>
           Speak
         </Button>
         <Button variant="primary " onClick={handleStopSpeakClick}>
