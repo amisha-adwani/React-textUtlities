@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
+
 function TextForm(props) {
   function handleChange(event) {
     setText(event.target.value);
@@ -18,8 +19,21 @@ function TextForm(props) {
   function handleClearClick() {
     let newText = "";
     setText(newText);
+    window.speechSynthesis.cancel()
   }
 
+  const handleSpeakClick=()=>{
+    let utterance = new SpeechSynthesisUtterance(text)
+    window.speechSynthesis.speak(utterance)
+  }
+  const handleStopSpeakClick=()=>{
+    window.speechSynthesis.pause()
+  }
+  const handleResumeSpeakClick=()=>{
+    window.speechSynthesis.resume()
+  }
+ 
+  
   const [text, setText] = useState("");
   return (
     <>
@@ -41,6 +55,15 @@ function TextForm(props) {
         </Button>
         <Button variant="primary " onClick={handleClearClick}>
           Clear
+        </Button>
+        <Button variant="primary mx-2" onClick={handleSpeakClick}>
+          Speak
+        </Button>
+        <Button variant="primary " onClick={handleStopSpeakClick}>
+          Stop
+        </Button>
+        <Button variant="primary mx-2" onClick={handleResumeSpeakClick}>
+          Resume 
         </Button>
       </Form>
       <h2 className="my-3">Your text summary</h2>
