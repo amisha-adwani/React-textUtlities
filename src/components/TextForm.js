@@ -43,7 +43,11 @@ function TextForm(props) {
   }
 
   function handleBoldClick() {
-    setBold(!bold);
+    if (bold) {
+      setBold(false);
+    } else {
+      setBold(true);
+    }
   }
   const textStyle = {
     fontWeight: bold ? "bold" : "normal",
