@@ -2,7 +2,6 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-
 function TextForm(props) {
   function handleChange(event) {
     setText(event.target.value);
@@ -19,21 +18,40 @@ function TextForm(props) {
   function handleClearClick() {
     let newText = "";
     setText(newText);
-    window.speechSynthesis.cancel()
+    window.speechSynthesis.cancel();
   }
 
-  const handleSpeakClick=()=>{
-    let utterance = new SpeechSynthesisUtterance(text)
-    window.speechSynthesis.speak(utterance)
+  const handleSpeakClick = () => {
+    let utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+  };
+  const handleStopSpeakClick = () => {
+    window.speechSynthesis.pause();
+  };
+  const handleResumeSpeakClick = () => {
+    window.speechSynthesis.resume();
+  };
+
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
+  const [underline, setUnderline] = useState(false)
+  function handleUnderlineClick(){
+    setUnderline(!underline)
   }
-  const handleStopSpeakClick=()=>{
-    window.speechSynthesis.pause()
+  function handleItalicClick(){
+    setItalic(!italic)
   }
-  const handleResumeSpeakClick=()=>{
-    window.speechSynthesis.resume()
+
+  function handleBoldClick() {
+    setBold(!bold);
   }
- 
-  
+  const textStyle = {
+    fontWeight: bold ? "bold" : "normal",
+    fontStyle : italic? 'italic': 'normal',
+    textDecoration : underline? 'underline' :''
+
+  };
+
   const [text, setText] = useState("");
   return (
     <>
@@ -45,6 +63,8 @@ function TextForm(props) {
             value={text}
             onChange={handleChange}
             rows={4}
+            style={textStyle}
+            className="ta"
           />
         </Form.Group>
         <Button variant="primary" onClick={handleUpClick}>
@@ -63,7 +83,16 @@ function TextForm(props) {
           Stop
         </Button>
         <Button variant="primary mx-2" onClick={handleResumeSpeakClick}>
-          Resume 
+          Resume
+        </Button>
+        <Button variant="primary " onClick={handleBoldClick}>
+          Bold
+        </Button>
+        <Button variant="primary mx-2" onClick={handleItalicClick}>
+          Italic
+        </Button>
+        <Button variant="primary " onClick={handleUnderlineClick}>
+          Underline
         </Button>
       </Form>
       <h2 className="my-3">Your text summary</h2>
