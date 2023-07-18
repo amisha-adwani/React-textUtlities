@@ -59,7 +59,7 @@ function TextForm(props) {
   const [text, setText] = useState("");
   return (
     <>
-      <Form>
+      <Form data-bs-theme={props.mode}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>{props.heading}</Form.Label>
           <Form.Control
@@ -70,6 +70,7 @@ function TextForm(props) {
             style={textStyle}
             className="ta"
           />
+          
         </Form.Group>
         <Button variant="primary" onClick={handleUpClick}>
           UpperCase
