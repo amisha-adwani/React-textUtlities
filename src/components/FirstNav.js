@@ -6,18 +6,9 @@ import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 
 export default function FirstNav(props) {
-  // function style (){
-  //   if(props.mode === 'light'){
-  //     color= "black"
-  //   }
-  //   else
-  //   color= 'white'
-  // }
   return (
     <>
-      {/* <Navbar bg={props.mode}> */}
       <Navbar bg={props.mode} data-bs-theme={props.mode}>
-        {/* <Navbar bg="dark" data-bs-theme="dark"> */}
         <Container>
           <Navbar.Brand href="#home">{props.title}</Navbar.Brand>
           <Nav className="me-auto">
