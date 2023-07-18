@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function FirstNav(props) {
@@ -18,7 +17,7 @@ export default function FirstNav(props) {
     <>
       {/* <Navbar bg={props.mode}> */}
       <Navbar bg={props.mode} data-bs-theme={props.mode}>
-      {/* <Navbar bg="dark" data-bs-theme="dark"> */}
+        {/* <Navbar bg="dark" data-bs-theme="dark"> */}
         <Container>
           <Navbar.Brand href="#home">{props.title}</Navbar.Brand>
           <Nav className="me-auto">
@@ -28,9 +27,9 @@ export default function FirstNav(props) {
           <Form.Check
             type="switch"
             id="custom-switch"
-            label={`Enable ${props.mode==='dark'? 'light' : 'dark'} mode`}
+            label={`Enable ${props.mode === "dark" ? "light" : "dark"} mode`}
             onClick={props.onClick}
-            style={{color: props.mode==='dark' ? "white" : "black"}}
+            style={{ color: props.mode === "dark" ? "white" : "black" }}
           />
         </Container>
       </Navbar>
