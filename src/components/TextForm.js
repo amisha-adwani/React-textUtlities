@@ -59,8 +59,8 @@ function TextForm(props) {
   const [text, setText] = useState("");
   return (
     <>
-      <Form data-bs-theme={props.mode}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+      <Form >
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" data-bs-theme={props.mode}>
           <Form.Label>{props.heading}</Form.Label>
           <Form.Control
             as="textarea"
@@ -68,7 +68,7 @@ function TextForm(props) {
             onChange={handleChange}
             rows={4}
             style={textStyle}
-            className="ta"
+
           />
           
         </Form.Group>
@@ -100,13 +100,15 @@ function TextForm(props) {
           Underline
         </Button>
       </Form>
-      <h2 className="my-3">Your text summary</h2>
+  
+      <h2 className="my-3" >Your text summary</h2>
       <p>
         {text.split(". ").length} sentences {text.split(" ").length} words and{" "}
         {text.length} characters
       </p>
       <h3>Preview</h3>
       <p>{text}</p>
+      
     </>
   );
 }
