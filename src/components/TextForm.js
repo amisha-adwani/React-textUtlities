@@ -3,64 +3,102 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 function TextForm(props) {
+  const [text, setText] = useState("");
+  const checkEmptyText = () => {
+    if (text === "") {
+      props.showAlert("warning", "please type in some text");
+      return false;
+    }
+    return true;
+  };
   function handleChange(event) {
     setText(event.target.value);
   }
 
   function handleUpClick() {
-    let newText = text.toUpperCase();
-    setText(newText);
+    if (checkEmptyText()) {
+      let newText = text.toUpperCase();
+      setText(newText);
+      props.showAlert("success", "uppercased");
+    }
   }
   function handleLoClick() {
-    let newText = text.toLowerCase();
-    setText(newText);
+    if (checkEmptyText()) {
+      let newText = text.toLowerCase();
+      setText(newText);
+      props.showAlert("success", "lowercased");
+    }
   }
   function handleClearClick() {
-    let newText = "";
-    setText(newText);
-    window.speechSynthesis.cancel();
+    if (checkEmptyText()) {
+      let newText = "";
+      setText(newText);
+      window.speechSynthesis.cancel();
+      props.showAlert("success", "cleared");
+    }
   }
 
   const handleSpeakClick = () => {
-    let utterance = new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.speak(utterance);
+    if (checkEmptyText()) {
+      let utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(utterance);
+      props.showAlert("success", "speaking");
+    }
   };
   const handleStopSpeakClick = () => {
-    window.speechSynthesis.pause();
+    if (checkEmptyText()) {
+      window.speechSynthesis.pause();
+      props.showAlert("success", "stopped speaking");
+    }
   };
   const handleResumeSpeakClick = () => {
-    window.speechSynthesis.resume();
+    if (checkEmptyText()) {
+      window.speechSynthesis.resume();
+      props.showAlert("success", "resumed speaking");
+    }
   };
 
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
-  const [underline, setUnderline] = useState(false)
-  function handleUnderlineClick(){
-    setUnderline(!underline)
+  const [underline, setUnderline] = useState(false);
+
+  function handleUnderlineClick() {
+    if (checkEmptyText()) {
+      setUnderline(!underline);
+      props.showAlert("success", "underline applied to text");
+    }
   }
-  function handleItalicClick(){
-    setItalic(!italic)
+  function handleItalicClick() {
+    if (checkEmptyText()) {
+      setItalic(!italic);
+      props.showAlert("success", "italic applied to text");
+    }
   }
 
   function handleBoldClick() {
-    if (bold) {
-      setBold(false);
-    } else {
-      setBold(true);
+    if (checkEmptyText()) {
+      if (bold) {
+        setBold(false);
+      } else {
+        setBold(true);
+      }
+      props.showAlert("success", "bold applied to text");
     }
   }
   const textStyle = {
     fontWeight: bold ? "bold" : "normal",
-    fontStyle : italic? 'italic': 'normal',
-    textDecoration : underline? 'underline' :''
-
+    fontStyle: italic ? "italic" : "normal",
+    textDecoration: underline ? "underline" : "",
   };
 
-  const [text, setText] = useState("");
   return (
     <>
-      <Form >
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" data-bs-theme={props.mode}>
+      <Form>
+        <Form.Group
+          className="mb-3"
+          controlId="exampleForm.ControlTextarea1"
+          data-bs-theme={props.mode}
+        >
           <Form.Label>{props.heading}</Form.Label>
           <Form.Control
             as="textarea"
@@ -68,9 +106,7 @@ function TextForm(props) {
             onChange={handleChange}
             rows={4}
             style={textStyle}
-
           />
-          
         </Form.Group>
         <Button variant="primary" onClick={handleUpClick}>
           UpperCase
@@ -100,15 +136,14 @@ function TextForm(props) {
           Underline
         </Button>
       </Form>
-  
-      <h2 className="my-3" >Your text summary</h2>
+
+      <h2 className="my-3">Your text summary</h2>
       <p>
         {text.split(". ").length} sentences {text.split(" ").length} words and{" "}
         {text.length} characters
       </p>
       <h3>Preview</h3>
       <p>{text}</p>
-      
     </>
   );
 }

@@ -24,6 +24,10 @@ export default function FirstNav(props) {
           />
         </Container>
       </Navbar>
+      {/* <SuccessAlert
+        variant="success"
+        message={` ${props.mode === "dark" ? "dark" : "light"} mode enabled`}
+      /> */}
     </>
   );
 }
