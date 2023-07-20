@@ -139,8 +139,8 @@ function TextForm(props) {
 
       <h2 className="my-3">Your text summary</h2>
       <p>
-        {text.split(". ").length} sentences {text.split(" ").length} words and{" "}
-        {text.length} characters
+        {text === ''? '0': text.split(". ").length} sentences, 
+         {text === ''? '0': text.split(" ").length} words and {text.length} characters
       </p>
       <h3>Preview</h3>
       <p>{text}</p>
