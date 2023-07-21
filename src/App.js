@@ -45,12 +45,12 @@ export default function App() {
   return (
     <div>
       <Router>
-        <FirstNav title="TextUtils" onClick={handleDarkClick} mode={dark} />
+        <FirstNav title='TextUtils' onClick={handleDarkClick} mode={dark} />
         <SuccessAlert alert={alert} />
         <div className="container my-3" style={style}>
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path='/' element={<TextForm heading="Enter your text" mode={dark} showAlert={showAlert}/>}/>
+            <Route path='/home' element={<TextForm heading="Enter your text" mode={dark} showAlert={showAlert}/>}/>
             </Routes>
         </div>
     </Router >
