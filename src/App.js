@@ -22,10 +22,12 @@ export default function App() {
       setDarkMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("success", "light mode enabled");
+      document.title ='TextUtils - Light Mode'
     } else {
       setDarkMode("dark");
       document.body.style.backgroundColor = "black";
       showAlert("success", "dark mode enabled");
+      document.title ='TextUtils - Dark Mode'
     }
     console.log(dark);
   }
