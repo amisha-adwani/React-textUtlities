@@ -4,17 +4,26 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function FirstNav(props) {
   return (
     <>
       <Navbar bg={props.mode} data-bs-theme={props.mode}>
         <Container>
-          <Navbar.Brand to="/">{props.title}</Navbar.Brand>
+          <LinkContainer to="/home">
+            <Navbar.Brand><h4>{props.title}</h4></Navbar.Brand>
+          </LinkContainer>
+          {/* <Navbar.Brand to="/">{props.title}</Navbar.Brand> */}
           <Nav className="me-auto">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
+            <LinkContainer to="/home">
+              <Nav.Link> <h5>Home</h5></Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link> <h5>About</h5></Nav.Link>
+            </LinkContainer>
+            {/* <Nav.Link to="/">Home</Nav.Link>
+            <Nav.Link to="/about">About</Nav.Link> */}
           </Nav>
           <Form.Check
             type="switch"

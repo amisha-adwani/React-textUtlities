@@ -99,13 +99,14 @@ function TextForm(props) {
           controlId="exampleForm.ControlTextarea1"
           data-bs-theme={props.mode}
         >
-          <Form.Label>{props.heading}</Form.Label>
+          <Form.Label><h4>{props.heading}</h4></Form.Label>
           <Form.Control
             as="textarea"
             value={text}
             onChange={handleChange}
             rows={4}
             style={textStyle}
+            placeholder="Type something"
           />
         </Form.Group>
         <Button variant="primary" onClick={handleUpClick}>
@@ -137,7 +138,7 @@ function TextForm(props) {
         </Button>
       </Form>
 
-      <h2 className="my-3">Your text summary</h2>
+      <h4 className="my-3">Your text summary</h4>
       <p>
         {text === ''? '0': text.split(". ").length} sentences, 
          {text === ''? '0': text.split(" ").length} words and {text.length} characters
