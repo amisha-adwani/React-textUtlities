@@ -124,13 +124,13 @@ function TextForm(props) {
         <Button variant="primary " onClick={handleStopSpeakClick}>
           Stop
         </Button>
-        <Button variant="primary mx-2" onClick={handleResumeSpeakClick}>
+        <Button variant="primary m-2" onClick={handleResumeSpeakClick}>
           Resume
         </Button>
         <Button variant="primary " onClick={handleBoldClick}>
           Bold
         </Button>
-        <Button variant="primary mx-2" onClick={handleItalicClick}>
+        <Button variant="primary m-2" onClick={handleItalicClick}>
           Italic
         </Button>
         <Button variant="primary " onClick={handleUnderlineClick}>
