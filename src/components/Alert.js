@@ -2,12 +2,12 @@ import Alert from "react-bootstrap/Alert";
 
 function SuccessAlert(props) {
   return (
-    <div style={{height: '50px'}}>
-  {props.alert && (
-    <Alert variant={props.alert.variant}>
-      <strong>{props.alert.variant}</strong> {props.alert.message}
-    </Alert>
-  )}
+    <div style={{ height: "50px" }}>
+      {props.alert && (
+        <Alert variant={props.alert.variant}>
+          <strong>{props.alert.variant}</strong> {props.alert.message}
+        </Alert>
+      )}
     </div>
   );
 }
